@@ -9,14 +9,22 @@ interface HeaderProps {
 }
 
 export default function Header({ isLoggedIn = false }: HeaderProps) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   /**
    * 로그인 상태에 따른 클래스 설정
    * - login: 비로그인 상태 (로그인 버튼 + 검색 버튼)
    * - logout: 로그인 상태 (로그아웃 버튼 + 마이페이지 버튼 + 검색 버튼)
    */
   const authClass = isLoggedIn ? "logout" : "login";
+
+  const handleSearchToggle = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
+  const handleSearchClose = () => {
+    setIsSearchOpen(false);
+  };
 
   return (
     // header에 login 또는 logout 클래스를 추가하여 CSS로 버튼 표시/숨김 제어
@@ -81,11 +89,37 @@ export default function Header({ isLoggedIn = false }: HeaderProps) {
               />
             </Link>
 
-            {/* 메인 네비게이션 - 데스크톱 */}
+            {/* 메인 네비게이션 (GNB) */}
             <nav className="gnb">
-              <Link href="/village" className="gnb-link">우리마을</Link>
-              <Link href="/story" className="gnb-link">마을 이야기</Link>
-              <Link href="/data" className="gnb-link">마을 데이터</Link>
+              {/* 우리마을 - 서브메뉴 없음 */}
+              <div className="gnb-item">
+                <Link href="/village" className="gnb-link">우리마을</Link>
+              </div>
+
+              {/* 마을 이야기 - 서브메뉴 있음 */}
+              <div className="gnb-item has-sub">
+                <Link href="/story" className="gnb-link">마을 이야기</Link>
+                <div className="gnb-dropdown">
+                  <div className="gnb-dropdown-inner">
+                    <Link href="/story/activity" className="gnb-sub-link">마을활동</Link>
+                    <Link href="/story/agenda" className="gnb-sub-link">마을의제</Link>
+                    <Link href="/story/meeting" className="gnb-sub-link">마을총회</Link>
+                    <Link href="/story/tour" className="gnb-sub-link">동네한바퀴</Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* 마을 데이터 - 서브메뉴 있음 */}
+              <div className="gnb-item has-sub">
+                <Link href="/data" className="gnb-link">마을 데이터</Link>
+                <div className="gnb-dropdown">
+                  <div className="gnb-dropdown-inner">
+                    <Link href="/data/visualization" className="gnb-sub-link">시각화데이터</Link>
+                    <Link href="/data/map" className="gnb-sub-link">마을지도</Link>
+                    <Link href="/data/video" className="gnb-sub-link">마을영상관</Link>
+                  </div>
+                </div>
+              </div>
             </nav>
 
             {/* 우측 버튼들 */}
@@ -106,58 +140,51 @@ export default function Header({ isLoggedIn = false }: HeaderProps) {
               </Link>
               
               {/* 검색 버튼 - 항상 표시 (노란색) */}
-              <button className="icon-btn icon-btn-yellow btn-search" title="통합검색">
+              <button 
+                className={`icon-btn icon-btn-yellow btn-search ${isSearchOpen ? 'active' : ''}`} 
+                title="통합검색"
+                onClick={handleSearchToggle}
+              >
                 <Image src="/images/ic_search.svg" alt="검색" width={20} height={20} />
               </button>
+            </div>
+          </div>
+        </div>
+      </div>
 
-              {/* 모바일 메뉴 버튼 */}
-              <button 
-                className="mobile-menu-btn"
-                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                aria-label="메뉴 열기"
-              >
-                <svg className="mobile-menu-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  {isMobileMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
+      {/* 통합검색 패널 */}
+      <div className={`search-panel ${isSearchOpen ? 'open' : ''}`}>
+        <div className="search-panel-bg" onClick={handleSearchClose} />
+        <div className="search-panel-content">
+          <div className="container">
+            <div className="search-panel-inner">
+              <div className="search-panel-header">
+                <h2 className="search-panel-title">통합검색</h2>
+                <p className="search-panel-desc">마을e척척에서 원하는 정보를 검색해보세요</p>
+              </div>
+              
+              <div className="search-input-wrapper">
+                <input 
+                  type="text" 
+                  className="search-input" 
+                  placeholder="검색어를 입력하세요"
+                  autoFocus={isSearchOpen}
+                />
+                <button className="search-submit-btn" type="button">
+                  <Image src="/images/ic_search.svg" alt="검색" width={24} height={24} />
+                  <span>검색</span>
+                </button>
+              </div>
+
+              <button className="search-close-btn" onClick={handleSearchClose}>
+                <span>닫기</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                 </svg>
               </button>
             </div>
           </div>
         </div>
-
-        {/* 모바일 메뉴 */}
-        {isMobileMenuOpen && (
-          <div className="mobile-menu">
-            <div className="container mobile-menu-inner">
-              <nav className="mobile-nav">
-                <Link 
-                  href="/village" 
-                  className="mobile-nav-link"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  우리마을
-                </Link>
-                <Link 
-                  href="/story" 
-                  className="mobile-nav-link"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  마을 이야기
-                </Link>
-                <Link 
-                  href="/data" 
-                  className="mobile-nav-link"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  마을 데이터
-                </Link>
-              </nav>
-            </div>
-          </div>
-        )}
       </div>
     </header>
   );

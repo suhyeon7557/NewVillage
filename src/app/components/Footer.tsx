@@ -56,7 +56,7 @@ export default function Footer() {
                 <span className="app-label">안드로이드</span>
               </Link>
               <Link href="#" className="app-link">
-                <div className="app-icon app-icon-orange">
+                <div className="app-icon">
                   <Image src="/images/ic_one.svg" alt="원스토어" width={24} height={24} />
                 </div>
                 <span className="app-label">원스토어</span>

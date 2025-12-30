@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import MobileNav from "./components/MobileNav";
 
 export const metadata: Metadata = {
   title: "마을e척척 - 마을 리빙랩 플랫폼",
@@ -16,10 +17,12 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <div className="min-h-screen flex flex-col">
+        <div className="layout-wrapper">
           <Header isLoggedIn={false} />
-          <main className="flex-1">{children}</main>
+          <main className="main-content">{children}</main>
           <Footer />
+          {/* 모바일 하단 네비게이션 */}
+          <MobileNav />
         </div>
       </body>
     </html>

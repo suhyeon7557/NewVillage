@@ -43,12 +43,12 @@ export default function Footer() {
             </div>
 
             <div className="footer-apps">
-              <Link href="#" className="app-link">
+              {/* <Link href="#" className="app-link">
                 <div className="app-icon">
                   <Image src="/images/ic_ios.svg" alt="iOS" width={24} height={24} />
                 </div>
                 <span className="app-label">iOS</span>
-              </Link>
+              </Link> */}
               <Link href="#" className="app-link">
                 <div className="app-icon">
                   <Image src="/images/ic_android.svg" alt="안드로이드" width={24} height={24} />

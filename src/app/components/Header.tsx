@@ -125,19 +125,19 @@ export default function Header({ isLoggedIn = false }: HeaderProps) {
             {/* 우측 버튼들 */}
             <div className="header-buttons">
               {/* 로그아웃 버튼 - 로그인 상태에서만 표시 (파란색) */}
-              <Link href="/logout" className="icon-btn icon-btn-blue btn-logout" title="로그아웃">
-                <Image src="/images/ic_logout.svg" alt="로그아웃" width={20} height={20} />
-              </Link>
+              <a href="/logout" className="icon-btn icon-btn-blue btn-logout" title="로그아웃">
+                <img src="/images/ic_logout.svg" alt="로그아웃" />
+              </a>
               
               {/* 마이페이지 버튼 - 로그인 상태에서만 표시 (보라색) */}
-              <Link href="/mypage" className="icon-btn icon-btn-purple btn-mypage" title="마이페이지">
-                <Image src="/images/ic_login.svg" alt="마이페이지" width={20} height={20} />
-              </Link>
+              <a href="/mypage" className="icon-btn icon-btn-purple btn-mypage" title="마이페이지">
+                <img src="/images/ic_login.svg" alt="마이페이지" />
+              </a>
               
               {/* 로그인 버튼 - 비로그인 상태에서만 표시 (보라색) */}
-              <Link href="/login" className="icon-btn icon-btn-purple btn-login" title="로그인">
-                <Image src="/images/ic_login.svg" alt="로그인" width={20} height={20} />
-              </Link>
+              <a href="/login" className="icon-btn icon-btn-purple btn-login" title="로그인">
+                <img src="/images/ic_login.svg" alt="로그인" />
+              </a>
               
               {/* 검색 버튼 - 항상 표시 (노란색) */}
               <button 
@@ -145,7 +145,7 @@ export default function Header({ isLoggedIn = false }: HeaderProps) {
                 title="통합검색"
                 onClick={handleSearchToggle}
               >
-                <Image src="/images/ic_search.svg" alt="검색" width={20} height={20} />
+                <img src="/images/ic_search.svg" alt="검색" />
               </button>
             </div>
           </div>

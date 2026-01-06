@@ -12,22 +12,53 @@ export default function Header({ isLoggedIn = false }: HeaderProps) {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   /**
-   * 로그인 상태에 따른 클래스 설정
-   * - login: 비로그인 상태 (로그인 버튼 + 검색 버튼)
-   * - logout: 로그인 상태 (로그아웃 버튼 + 마이페이지 버튼 + 검색 버튼)
+   * ========================================
+   * 로그인 상태 클래스 설정
+   * ========================================
+   * 
+   * ------------------------------------------
+   * 
+   * 비로그인 상태:
+   * <header class="header login">
+   * 
+   * 로그인 상태:
+   * <header class="header logout">
+   * 
+   * ------------------------------------------
+   * [버튼 표시 규칙]
+   * 
+   * header.login (비로그인):
+   *   - btn-login 표시 O
+   *   - btn-search 표시 O
+   *   - btn-logout 표시 X
+   *   - btn-mypage 표시 X
+   * 
+   * header.logout (로그인):
+   *   - btn-logout 표시 O
+   *   - btn-mypage 표시 O
+   *   - btn-search 표시 O
+   *   - btn-login 표시 X
+   * 
+   * ========================================
    */
   const authClass = isLoggedIn ? "logout" : "login";
+  // const authClass = "login";  // 테스트용: 비로그인 상태
+  // const authClass = "logout"; // 테스트용: 로그인 상태
 
+  // function toggleSearch() { document.querySelector('.search-panel').classList.toggle('open'); }
   const handleSearchToggle = () => {
     setIsSearchOpen(!isSearchOpen);
   };
 
+  // function closeSearch() { document.querySelector('.search-panel').classList.remove('open'); }
   const handleSearchClose = () => {
     setIsSearchOpen(false);
   };
 
+  // header 클래스 구조:
+  // - header.login : 비로그인 상태 (로그인 버튼 2개 표시)
+  // - header.logout : 로그인 상태 (로그아웃/마이페이지/검색 버튼 3개 표시)
   return (
-    // header에 login 또는 logout 클래스를 추가하여 CSS로 버튼 표시/숨김 제어
     <header className={`header ${authClass}`}>
       {/* 서브 헤더 (상단 검은색 바) */}
       <div className="sub-header">
@@ -63,7 +94,7 @@ export default function Header({ isLoggedIn = false }: HeaderProps) {
 
             {/* 우측 - 로그인 시에만 표시 */}
             <div className="sub-header-right">
-              <span className="sub-header-user">'엔유비즈님' 가입마</span>
+              <span className="sub-header-user">'엔유비즈님' 가입마을</span>
               <div className="sub-header-villages">
                 <Link href="#" className="village-tag">[광주마을]</Link>
                 <Link href="#" className="village-tag">[북구마을]</Link>
@@ -122,24 +153,43 @@ export default function Header({ isLoggedIn = false }: HeaderProps) {
               </div>
             </nav>
 
-            {/* 우측 버튼들 */}
+            {/* 
+              ========================================
+              우측 버튼 영역 - 로그인 상태에 따라 표시되는 버튼이 다름
+              ========================================
+              
+              [비로그인 상태] header.login 클래스일 때:
+              - 로그인 버튼 (btn-login) : 표시 O - 보라색 #6369DD
+              - 검색 버튼 (btn-search) : 표시 O - 노란색 #FFAE00
+              - 로그아웃 버튼 (btn-logout) : 표시 X
+              - 마이페이지 버튼 (btn-mypage) : 표시 X
+              
+              [로그인 상태] header.logout 클래스일 때:
+              - 로그아웃 버튼 (btn-logout) : 표시 O - 파란색 #4CA0FF
+              - 마이페이지 버튼 (btn-mypage) : 표시 O - 보라색 #6369DD
+              - 검색 버튼 (btn-search) : 표시 O - 노란색 #FFAE00
+              - 로그인 버튼 (btn-login) : 표시 X
+              
+              CSS에서 .header.login / .header.logout 클래스로 제어됨
+              ========================================
+            */}
             <div className="header-buttons">
-              {/* 로그아웃 버튼 - 로그인 상태에서만 표시 (파란색) */}
+              {/* [로그인 상태에서만 표시] 로그아웃 버튼 - 파란색 #4CA0FF */}
               <a href="/logout" className="icon-btn icon-btn-blue btn-logout" title="로그아웃">
                 <img src="/images/ic_logout.svg" alt="로그아웃" />
               </a>
               
-              {/* 마이페이지 버튼 - 로그인 상태에서만 표시 (보라색) */}
+              {/* [로그인 상태에서만 표시] 마이페이지 버튼 - 보라색 #6369DD */}
               <a href="/mypage" className="icon-btn icon-btn-purple btn-mypage" title="마이페이지">
                 <img src="/images/ic_login.svg" alt="마이페이지" />
               </a>
               
-              {/* 로그인 버튼 - 비로그인 상태에서만 표시 (보라색) */}
+              {/* [비로그인 상태에서만 표시] 로그인 버튼 - 보라색 #6369DD */}
               <a href="/login" className="icon-btn icon-btn-purple btn-login" title="로그인">
                 <img src="/images/ic_login.svg" alt="로그인" />
               </a>
               
-              {/* 검색 버튼 - 항상 표시 (노란색) */}
+              {/* [항상 표시] 검색 버튼 - 노란색 #FFAE00 */}
               <button 
                 className={`icon-btn icon-btn-yellow btn-search ${isSearchOpen ? 'active' : ''}`} 
                 title="통합검색"

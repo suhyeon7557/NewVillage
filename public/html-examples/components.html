@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공통 컴포넌트</title>
+  <link rel="stylesheet" href="../styles/common.css">
+</head>
+<body>
+
+<!-- ========================================
+     1. 탭 컴포넌트
+======================================== -->
+<div class="section">
+  <h2 class="section-title">1. 탭 (Tabs)</h2>
+
+  <div class="tabs">
+    <button type="button" class="tab-item active" data-tab="all">전체</button>
+    <button type="button" class="tab-item" data-tab="my">내 마을</button>
+  </div>
+</div>
+
+
+<!-- ========================================
+     2. 검색박스 컴포넌트
+======================================== -->
+<div class="section">
+  <h2 class="section-title">2. 검색박스 (SearchBox)</h2>
+  
+  <div class="search-box">
+    <!-- 셀렉트 박스 -->
+    <div class="search-select">
+      <button type="button" class="search-select-trigger" onclick="toggleSearchSelect(this)">
+        <span>제목</span>
+        <img src="/images/ic_select_gray.svg" alt="선택" class="search-select-icon">
+      </button>
+      <div class="search-select-dropdown" style="display: none;">
+        <ul class="search-select-list">
+          <li><button type="button" class="search-select-item active" data-value="title" onclick="selectSearchOption(this, '제목')">제목</button></li>
+          <li><button type="button" class="search-select-item" data-value="content" onclick="selectSearchOption(this, '내용')">내용</button></li>
+          <li><button type="button" class="search-select-item" data-value="author" onclick="selectSearchOption(this, '작성자')">작성자</button></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- 검색 입력 -->
+    <div class="search-input-wrap">
+      <input type="text" class="search-input" placeholder="검색" name="keyword">
+      <button type="button" class="search-btn">
+        <img src="/images/ic_search_gray.svg" alt="검색">
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========================================
+     3. 정렬 탭 컴포넌트
+======================================== -->
+<div class="section">
+  <h2 class="section-title">3. 정렬 탭 (SortTabs)</h2>
+  
+  <!-- 
+    JSP 사용법:
+    - active 클래스로 활성 정렬 표시
+    - href에 정렬 파라미터 추가 가능
+  -->
+  <div class="sort-tabs">
+    <button type="button" class="sort-tab active" data-sort="latest">최신순</button>
+    <button type="button" class="sort-tab" data-sort="popular">공감순</button>
+  </div>
+</div>
+
+
+<!-- ========================================
+     4. 페이지네이션 컴포넌트
+======================================== -->
+<div class="section">
+  <h2 class="section-title">4. 페이지네이션 (Pagination)</h2>
+  
+  <div class="pagination">
+    <button type="button" class="pagination-btn pagination-prev" disabled>
+      <img src="/images/ic_prev_paging.svg" alt="이전">
+    </button>
+    <div class="pagination-numbers">
+      <button type="button" class="pagination-num">1</button>
+      <button type="button" class="pagination-num active">2</button>
+      <button type="button" class="pagination-num">3</button>
+      <button type="button" class="pagination-num">4</button>
+      <button type="button" class="pagination-num">5</button>
+    </div>
+    <button type="button" class="pagination-btn pagination-next">
+      <img src="/images/ic_next_paging.svg" alt="다음">
+    </button>
+  </div>
+</div>
+
+
+<!-- ========================================
+     5. 프로필 컴포넌트
+     ----------------------------------------
+     프로필 이미지는 CSS background-image로 처리
+     class만 변경하면 이미지 자동 적용
+     
+     [사용법]
+     - 일반 사용자: class="profile-image basic"
+     - 관리자(마을e척척): class="profile-image master"
+======================================== -->
+<div class="section">
+  <h2 class="section-title">5. 프로필 (Profile)</h2>
+  
+  <div style="display: flex; gap: 40px;">
+    
+    <!-- 
+      일반 사용자 프로필
+      - class: profile-image basic
+      - 이미지: /images/ic_profile.svg (CSS에서 자동 적용)
+    -->
+    <div>
+      <p style="margin-bottom: 10px; font-size: 0.875rem; color: #999;">일반 사용자 (basic)</p>
+      <div class="profile">
+        <div class="profile-image basic"></div>
+        <div class="profile-info">
+          <span class="profile-name">달봉맘</span>
+          <span class="profile-date">2025.09.24</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 
+      관리자 프로필 (마을e척척)
+      - class: profile-image master
+      - 이미지: /images/ic_Elogo.svg (CSS에서 자동 적용)
+    -->
+    <div>
+      <p style="margin-bottom: 10px; font-size: 0.875rem; color: #999;">관리자 (master)</p>
+      <div class="profile">
+        <div class="profile-image master"></div>
+        <div class="profile-info">
+          <span class="profile-name">마을e척척</span>
+          <span class="profile-date">2025.09.24</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ========================================
+     6. 좋아요/댓글 컴포넌트
+======================================== -->
+<div class="section">
+  <h2 class="section-title">6. 좋아요/댓글 (Engagement)</h2>
+  
+  <div class="engagement">
+    <span class="engagement-item engagement-likes">
+      <img src="/images/ic_good.svg" alt="좋아요">
+      <span>4</span>
+    </span>
+    <span class="engagement-item engagement-comments">
+      <img src="/images/ic_talk.svg" alt="댓글">
+      <span>0</span>
+    </span>
+  </div>
+</div>
+
+<script>
+/*
+===========================================
+공통 컴포넌트 JavaScript
+-------------------------------------------
+JSP에서 그대로 사용 가능
+===========================================
+*/
+
+// 탭 클릭 이벤트
+document.querySelectorAll('.tab-item').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    // 모든 탭에서 active 제거
+    document.querySelectorAll('.tab-item').forEach(function(t) {
+      t.classList.remove('active');
+    });
+    // 클릭한 탭에 active 추가
+    this.classList.add('active');
+    
+    // 탭 값 가져오기
+    var tabValue = this.getAttribute('data-tab');
+    console.log('선택된 탭:', tabValue);
+    
+    // TODO: 탭에 따른 데이터 로드 로직 추가
+  });
+});
+
+// 정렬 탭 클릭 이벤트
+document.querySelectorAll('.sort-tab').forEach(function(tab) {
+  tab.addEventListener('click', function() {
+    document.querySelectorAll('.sort-tab').forEach(function(t) {
+      t.classList.remove('active');
+    });
+    this.classList.add('active');
+    
+    var sortValue = this.getAttribute('data-sort');
+    console.log('선택된 정렬:', sortValue);
+    
+    // TODO: 정렬에 따른 데이터 로드 로직 추가
+  });
+});
+
+// 검색 셀렉트 토글
+function toggleSearchSelect(trigger) {
+  var select = trigger.closest('.search-select');
+  var dropdown = select.querySelector('.search-select-dropdown');
+  var icon = select.querySelector('.search-select-icon');
+  
+  var isOpen = dropdown.style.display === 'block';
+  
+  // 다른 드롭다운 닫기
+  document.querySelectorAll('.search-select-dropdown').forEach(function(d) {
+    d.style.display = 'none';
+  });
+  document.querySelectorAll('.search-select-icon').forEach(function(i) {
+    i.classList.remove('rotate');
+  });
+  
+  if (!isOpen) {
+    dropdown.style.display = 'block';
+    icon.classList.add('rotate');
+  }
+}
+
+// 검색 옵션 선택
+function selectSearchOption(item, label) {
+  var select = item.closest('.search-select');
+  var triggerText = select.querySelector('.search-select-trigger span');
+  var dropdown = select.querySelector('.search-select-dropdown');
+  var icon = select.querySelector('.search-select-icon');
+  
+  // 텍스트 변경
+  triggerText.textContent = label;
+  
+  // active 클래스 변경
+  select.querySelectorAll('.search-select-item').forEach(function(i) {
+    i.classList.remove('active');
+  });
+  item.classList.add('active');
+  
+  // 드롭다운 닫기
+  dropdown.style.display = 'none';
+  icon.classList.remove('rotate');
+}
+
+// 외부 클릭 시 드롭다운 닫기
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.search-select')) {
+    document.querySelectorAll('.search-select-dropdown').forEach(function(d) {
+      d.style.display = 'none';
+    });
+    document.querySelectorAll('.search-select-icon').forEach(function(i) {
+      i.classList.remove('rotate');
+    });
+  }
+});
+
+// 페이지네이션 클릭 이벤트
+document.querySelectorAll('.pagination-num').forEach(function(num) {
+  num.addEventListener('click', function() {
+    document.querySelectorAll('.pagination-num').forEach(function(n) {
+      n.classList.remove('active');
+    });
+    this.classList.add('active');
+    
+    var page = this.textContent;
+    console.log('선택된 페이지:', page);
+    
+    // TODO: 페이지에 따른 데이터 로드 로직 추가
+  });
+});
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,676 @@
+/* ========================================
+   공통 컴포넌트 스타일
+   ----------------------------------------
+   탭, 검색박스, 정렬, 페이지네이션,
+   프로필, 좋아요/댓글, 카드, 리스트 페이지
+======================================== */
+
+
+/* ========================================
+   공통 컴포넌트 - 탭
+======================================== */
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.tab-item {
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  color: var(--color-text-gray);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.tab-item:hover {
+  color: var(--color-text-black);
+}
+
+.tab-item.active {
+  color: var(--color-text-black);
+  font-weight: 600;
+}
+
+
+/* ========================================
+   공통 컴포넌트 - 검색박스
+======================================== */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.search-select {
+  position: relative;
+}
+
+.search-select-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-sm);
+  height: 40px;
+  min-width: 100px;
+  padding: 0 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background-color: var(--color-bg-white);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-black);
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.search-select-trigger:hover {
+  border-color: var(--color-text-gray);
+}
+
+.search-select-icon {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.2s;
+}
+
+.search-select-icon.rotate {
+  transform: rotate(180deg);
+}
+
+.search-select-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 100%;
+  background-color: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.search-select-list {
+  list-style: none;
+}
+
+.search-select-item {
+  display: block;
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-black);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-select-item:hover {
+  background-color: var(--color-bg-light);
+}
+
+.search-select-item.active {
+  color: var(--color-primary-green-dark);
+  font-weight: 500;
+}
+
+.search-input-wrap {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search-input {
+  width: 160px;
+  height: 40px;
+  padding: 0 0.75rem;
+  border: none;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-black);
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: var(--color-text-gray);
+}
+
+.search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.search-btn:hover img {
+  content: url('/images/ic_search_purple.svg');
+}
+
+.search-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+
+/* ========================================
+   공통 컴포넌트 - 정렬 탭
+======================================== */
+.sort-tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.sort-tab {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-gray);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.sort-tab:hover {
+  color: var(--color-text-black);
+}
+
+.sort-tab.active {
+  color: var(--color-primary-orange);
+  font-weight: 500;
+}
+
+
+/* ========================================
+   공통 컴포넌트 - 페이지네이션
+======================================== */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+}
+
+.pagination-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pagination-btn img {
+  width: 16px;
+  height: 16px;
+}
+
+.pagination-numbers {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.pagination-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-gray);
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pagination-num:hover {
+  color: var(--color-text-black);
+  background-color: var(--color-bg-light);
+}
+
+.pagination-num.active {
+  color: var(--color-text-white);
+  background-color: var(--color-primary-purple);
+  font-weight: 500;
+}
+
+
+/* ========================================
+   공통 컴포넌트 - 프로필
+   ----------------------------------------
+   [사용법]
+   - 일반 사용자: <div class="profile-image basic"></div>
+   - 관리자(마을e척척): <div class="profile-image master"></div>
+   
+   ※ img 태그 필요없음! class만 변경하면 이미지 자동 적용
+======================================== */
+.profile {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.profile-image {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: var(--color-bg-white);
+  border: 3px solid var(--color-bg-white);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background-size: 20px 23px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 
+  기본 프로필 (일반 사용자)
+  class="profile-image basic"
+*/
+.profile-image.basic {
+  background-image: url('/images/ic_profile.svg');
+}
+
+/* 
+  관리자 프로필 (마을e척척)
+  class="profile-image master"
+*/
+.profile-image.master {
+  background-image: url('/images/ic_Elogo.svg');
+  background-size: cover;
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.profile-name {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-black);
+}
+
+.profile-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-gray);
+}
+
+.profile-date::before {
+  content: "·";
+  margin-right: var(--spacing-sm);
+}
+
+
+/* ========================================
+   공통 컴포넌트 - 좋아요/댓글
+======================================== */
+.engagement {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.engagement-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-gray);
+}
+
+.engagement-item img {
+  width: 16px;
+  height: 16px;
+}
+
+
+/* ========================================
+   공통 컴포넌트 - 카드
+======================================== */
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+/* 카드 - 글씨형 */
+.card-text {
+  padding: 1.25rem;
+}
+
+.card-text .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+/* 카드 - 갤러리형 (오른쪽에 썸네일 + 좋아요/댓글) */
+.card-gallery {
+  position: relative;
+  padding: 1.25rem;
+  padding-right: 180px; /* 썸네일 공간 확보 */
+}
+
+.card-gallery .card-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.card-gallery .card-thumbnail {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 140px;
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-gallery .card-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 갤러리형 카드의 좋아요/댓글 - 썸네일 아래 */
+.card-gallery .engagement {
+  position: absolute;
+  bottom: 1.25rem;
+  right: 1.25rem;
+}
+
+/* 갤러리형 카드의 footer - 프로필만 */
+.card-gallery .card-footer {
+  justify-content: flex-start;
+}
+
+/* 카드 메타 (마을명, 상태, 카테고리) */
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.card-village {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-black);
+}
+
+/*
+  상태 배지
+  - pending (대기): 파란색
+  - progress (진행): 주황색
+  - complete (종료): 회색
+*/
+.card-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  border-radius: 4px;
+}
+
+/* 대기 - 파란색 */
+.card-status.pending {
+  background-color: var(--color-primary-blue);
+  color: var(--color-text-white);
+}
+
+/* 진행 - 주황색 */
+.card-status.progress {
+  background-color: var(--color-primary-orange);
+  color: var(--color-text-white);
+}
+
+/* 종료 - 회색 */
+.card-status.complete {
+  background-color: var(--color-text-gray);
+  color: var(--color-text-white);
+}
+
+.card-category {
+  font-size: var(--font-size-xs);
+  color: var(--color-primary-purple);
+  font-weight: 500;
+}
+
+/* 카드 제목 */
+.card-title {
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  color: var(--color-text-black);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 카드 내용 (2줄 높이 고정) */
+.card-content {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-gray);
+  line-height: 1.5;
+  min-height: calc(var(--font-size-sm) * 1.5 * 2); /* 2줄 높이 고정 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 카드 기간 */
+.card-period {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-gray);
+}
+
+/* 카드 하단 */
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: auto;
+  padding-top: var(--spacing-sm);
+}
+
+.card-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-gray);
+}
+
+
+/* ========================================
+   리스트 페이지 레이아웃
+======================================== */
+.list-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* 리스트 헤더 (탭 + 검색) */
+.list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.list-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.list-header-right {
+  display: flex;
+  align-items: center;
+}
+
+/* 리스트 정보 (총 개수 + 정렬) */
+.list-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+}
+
+.list-total {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-black);
+}
+
+.list-total strong {
+  color: var(--color-primary-purple);
+  font-weight: 600;
+}
+
+/* 카드 리스트 */
+.card-list {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+/* 글씨형 리스트 - 2열 */
+.card-list-text {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* 갤러리형 리스트 - 2열 */
+.card-list-gallery {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+
+/* ========================================
+   공통 컴포넌트 반응형
+======================================== */
+@media (max-width: 1024px) {
+  .card-list-text,
+  .card-list-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .list-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .list-header-left,
+  .list-header-right {
+    width: 100%;
+  }
+  
+  .search-box {
+    width: 100%;
+  }
+  
+  .search-select {
+    flex-shrink: 0;
+  }
+  
+  .search-input-wrap {
+    flex: 1;
+  }
+  
+  .search-input {
+    width: 100%;
+  }
+  
+  .list-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  /* 갤러리형 카드 - 768px 이하에서 썸네일 숨김 */
+  .card-gallery {
+    padding-right: 1.25rem; /* 기본 패딩으로 복원 */
+  }
+  
+  .card-gallery .card-thumbnail {
+    display: none; /* 썸네일 숨김 */
+  }
+  
+  .card-gallery .engagement {
+    position: static; /* absolute 해제 */
+  }
+  
+  .card-gallery .card-footer {
+    justify-content: space-between; /* 프로필-좋아요 양끝 배치 */
+  }
+}
+
+@media (max-width: 480px) {
+  .tabs {
+    gap: var(--spacing-sm);
+  }
+  
+  .tab-item {
+    font-size: var(--font-size-sm);
+  }
+  
+  .search-select-trigger {
+    min-width: 80px;
+    height: 36px;
+    font-size: var(--font-size-xs);
+  }
+  
+  .search-input {
+    height: 36px;
+  }
+  
+  .search-btn {
+    width: 36px;
+  }
+  
+  .sort-tabs {
+    gap: var(--spacing-sm);
+  }
+  
+  .sort-tab {
+    font-size: var(--font-size-xs);
+  }
+  
+  .card-text {
+    padding: 1rem;
+  }
+  
+}
+

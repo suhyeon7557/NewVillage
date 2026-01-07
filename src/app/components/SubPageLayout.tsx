@@ -2,23 +2,6 @@
 
 import { useEffect } from "react";
 
-/*
-===========================================
-HTML/JSP 변환 가이드
-===========================================
-
-[HTML 구조]
-- 아래 JSX를 그대로 HTML로 사용 가능
-- img 태그의 src 경로만 수정
-- Link → a 태그로 변경
-- className → class로 변경
-
-[JavaScript 함수] - 별도 JS 파일로 분리
-1. initScrollAnimation() - 스크롤 애니메이션
-2. initBreadcrumbDropdown() - 드롭다운 메뉴
-
-===========================================
-*/
 
 interface SubPageLayoutProps {
   title: string;

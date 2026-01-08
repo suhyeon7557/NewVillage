@@ -11,16 +11,32 @@ export default function ListPageExample() {
       {/* 리스트 페이지 */}
       <div className="list-page">
         
-        {/* 상단 헤더: 탭 + 검색 */}
-        <div className="list-header">
-          <div className="list-header-left">
-            <div className="tabs">
-              <button type="button" className="tab-item active" data-tab="all">전체</button>
-              <button type="button" className="tab-item" data-tab="my">내 마을</button>
+        {/* 필터 영역: 1뎁스 + 2뎁스 탭 */}
+        <div className="list-filter-area">
+          {/* 1뎁스 탭: 전체 / 내 마을 */}
+          <div className="tabs tabs-primary">
+            <button type="button" className="tab-item active" data-tab="all">전체</button>
+            <button type="button" className="tab-item" data-tab="my">내 마을</button>
+          </div>
+          
+          {/* 2뎁스 탭: 마을e척척 / do반장 */}
+          <div className="tabs tabs-secondary">
+            <button type="button" className="tab-item active" data-tab="echuckchuck">마을e척척</button>
+            <button type="button" className="tab-item" data-tab="dobanjang">우리동네do반장</button>
+          </div>
+        </div>
+
+        {/* 검색 + 정렬 영역 */}
+        <div className="list-toolbar">
+          <div className="list-toolbar-left">
+            <span className="list-total">총 <strong>83</strong>건</span>
+            <div className="sort-tabs">
+              <button type="button" className="sort-tab active" data-sort="latest">최신순</button>
+              <button type="button" className="sort-tab" data-sort="popular">공감순</button>
             </div>
           </div>
-          <div className="list-header-right">
-            <div className="search-box">
+          <div className="list-toolbar-right">
+            <div className="search-box search-box-compact">
               <div className="search-select">
                 <button type="button" className="search-select-trigger">
                   <span>제목</span>
@@ -28,7 +44,7 @@ export default function ListPageExample() {
                 </button>
               </div>
               <div className="search-input-wrap">
-                <input type="text" className="search-input" placeholder="검색" />
+                <input type="text" className="search-input" placeholder="검색어 입력" />
                 <button type="button" className="search-btn">
                   <img src="/images/ic_search_gray.svg" alt="검색" />
                 </button>
@@ -37,17 +53,13 @@ export default function ListPageExample() {
           </div>
         </div>
 
-        {/* 리스트 정보: 총 개수 + 정렬 */}
-        <div className="list-info">
-          <div className="list-info-left">
-            <span className="list-total">총 <strong>83</strong>건</span>
+        {/* 리스트 없음 예시 - class="list-empty hide" 로 숨김 처리 */}
+        <div className="list-empty hide">
+          <div className="list-empty-icon">
+            <img src="/images/ic_empty.svg" alt="게시글 없음" />
           </div>
-          <div className="list-info-right">
-            <div className="sort-tabs">
-              <button type="button" className="sort-tab active" data-sort="latest">최신순</button>
-              <button type="button" className="sort-tab" data-sort="popular">공감순</button>
-            </div>
-          </div>
+          <p className="list-empty-text">등록된 게시글이 없습니다.</p>
+          <p className="list-empty-subtext">첫 번째 게시글을 작성해보세요!</p>
         </div>
 
         {/* 카드 리스트 */}
@@ -93,7 +105,7 @@ export default function ListPageExample() {
               <p className="card-content">2026년 진월동 주민총회 마을의제 상정 푸른길 공원 안심산책길 조성 - 야간 보행로가 어두운 푸른길 공원에 가로수 추가 설치와 더불어 가로등을 가리는 나무에 대한...</p>
               <div className="card-footer">
                 <div className="profile">
-                  <div className="profile-image master"></div>
+                  <div className="profile`-image master"></div>
                   <div className="profile-info">
                     <span className="profile-name">마을e척척</span>
                     <span className="profile-date">2025.09.24</span>
@@ -330,6 +342,119 @@ export default function ListPageExample() {
             </div>
           </div>
 
+        </div>
+
+        {/* ================================================
+            투표 카드 (4열 그리드)
+            ================================================ */}
+        <div className="card-grid-vote" style={{ marginTop: '2rem' }}>
+          {/* 투표 카드 1: 진행 */}
+          <div className="card card-vote">
+            <div className="card-body">
+              <div className="card-meta">
+                <span className="card-status progress">진행</span>
+                <span className="card-village">[진월동]진월마을</span>
+              </div>
+              <h3 className="card-title">현장투표 ② 2025 학운동 주민총회...</h3>
+              <p className="card-content">공익형법인설립 의제 내용에 공감하시나요? (1~5점 투표) ※ 본 투표는 학운동 중장기마을계획 실행을 위한 마을의제 공감 정도를...</p>
+            </div>
+            <div className="card-footer">
+              <div className="card-footer-row">
+                <span className="card-period">2025-08-12 ~ 2025-08-19</span>
+                <div className="engagement">
+                  <span className="engagement-item engagement-likes">
+                    <img src="/images/ic_good.svg" alt="좋아요" />
+                    <span>4</span>
+                  </span>
+                  <span className="engagement-item engagement-comments">
+                    <img src="/images/ic_talk.svg" alt="댓글" />
+                    <span>0</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 투표 카드 2: 대기 */}
+          <div className="card card-vote">
+            <div className="card-body">
+              <div className="card-meta">
+                <span className="card-status pending">대기</span>
+                <span className="card-village">[운암1동]운암마을</span>
+              </div>
+              <h3 className="card-title">2026년 마을 예산 우선순위 투표</h3>
+              <p className="card-content">내년도 마을 예산 사용 우선순위를 결정하기 위한 투표입니다. 많은 참여 부탁드립니다.</p>
+            </div>
+            <div className="card-footer">
+              <div className="card-footer-row">
+                <span className="card-period">2025-09-01 ~ 2025-09-15</span>
+                <div className="engagement">
+                  <span className="engagement-item engagement-likes">
+                    <img src="/images/ic_good.svg" alt="좋아요" />
+                    <span>2</span>
+                  </span>
+                  <span className="engagement-item engagement-comments">
+                    <img src="/images/ic_talk.svg" alt="댓글" />
+                    <span>1</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 투표 카드 3: 정지 */}
+          <div className="card card-vote">
+            <div className="card-body">
+              <div className="card-meta">
+                <span className="card-status paused">정지</span>
+                <span className="card-village">[학운동]무꽃동마을</span>
+              </div>
+              <h3 className="card-title">마을 공동텃밭 운영 방식 선정</h3>
+              <p className="card-content">일시적으로 투표가 정지되었습니다. 추후 공지 예정입니다.</p>
+            </div>
+            <div className="card-footer">
+              <div className="card-footer-row">
+                <span className="card-period">2025-07-20 ~ 2025-07-30</span>
+                <div className="engagement">
+                  <span className="engagement-item engagement-likes">
+                    <img src="/images/ic_good.svg" alt="좋아요" />
+                    <span>8</span>
+                  </span>
+                  <span className="engagement-item engagement-comments">
+                    <img src="/images/ic_talk.svg" alt="댓글" />
+                    <span>3</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* 투표 카드 4: 종료 */}
+          <div className="card card-vote">
+            <div className="card-body">
+              <div className="card-meta">
+                <span className="card-status complete">종료</span>
+                <span className="card-village">[광주]광주마을</span>
+              </div>
+              <h3 className="card-title">주민자치센터 프로그램 선호도 조사</h3>
+              <p className="card-content">투표가 종료되었습니다. 결과는 마을게시판에서 확인하실 수 있습니다.</p>
+            </div>
+            <div className="card-footer">
+              <div className="card-footer-row">
+                <span className="card-period">2025-06-01 ~ 2025-06-30</span>
+                <div className="engagement">
+                  <span className="engagement-item engagement-likes">
+                    <img src="/images/ic_good.svg" alt="좋아요" />
+                    <span>25</span>
+                  </span>
+                  <span className="engagement-item engagement-comments">
+                    <img src="/images/ic_talk.svg" alt="댓글" />
+                    <span>12</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* 페이지네이션 */}

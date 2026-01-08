@@ -1,0 +1,10 @@
+<svg width="200" height="150" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="150" fill="#E3F2FD"/>
+  <circle cx="80" cy="60" r="20" fill="#2196F3"/>
+  <circle cx="100" cy="55" r="22" fill="#1976D2"/>
+  <circle cx="120" cy="60" r="20" fill="#2196F3"/>
+  <path d="M60 90 L80 80 L100 90 L120 80 L140 90" stroke="#1565C0" stroke-width="3" fill="none"/>
+  <path d="M70 100 L130 100" stroke="#1565C0" stroke-width="2"/>
+  <text x="100" y="140" text-anchor="middle" font-size="12" fill="#0D47A1">성장 마을</text>
+</svg>
+

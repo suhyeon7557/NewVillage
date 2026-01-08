@@ -1,0 +1,9 @@
+<svg width="200" height="150" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="200" height="150" fill="#FFF3E0"/>
+  <circle cx="100" cy="60" r="30" fill="#FF9800"/>
+  <path d="M85 55 L95 65 L115 45" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="70" y="95" width="60" height="10" rx="5" fill="#FFB74D"/>
+  <rect x="85" y="110" width="30" height="8" rx="4" fill="#FFB74D"/>
+  <text x="100" y="140" text-anchor="middle" font-size="12" fill="#E65100">행복 마을</text>
+</svg>
+

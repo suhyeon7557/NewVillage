@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상세 페이지</title>
+  <link rel="stylesheet" href="../styles/common.css">
+</head>
+<body>
+
+<!-- ========================================
+     상세 페이지 (Detail Page)
+     ----------------------------------------
+     리스트에서 클릭 시 표시되는 상세 화면
+======================================== -->
+<div class="detail-page">
+  
+  <!-- ========================================
+       상세 헤더
+       - 제목, 작성자, 일시, 조회수, 마을명
+  ======================================== -->
+  <div class="detail-header">
+    <h1 class="detail-title">진월동 달빛 모기장 영화제</h1>
+    <div class="detail-meta">
+      <span class="detail-meta-item">
+        <span class="detail-meta-label">작성자</span>
+        <!-- JSP: ${article.authorName} -->
+        <span class="detail-meta-value">마을e척척</span>
+      </span>
+      <span class="detail-meta-item">
+        <span class="detail-meta-label">일시</span>
+        <!-- JSP: ${article.createdAt} -->
+        <span class="detail-meta-value">2025-10-15 14:41:39</span>
+      </span>
+      <span class="detail-meta-item">
+        <span class="detail-meta-label">조회수</span>
+        <!-- JSP: ${article.viewCount} -->
+        <span class="detail-meta-value">231</span>
+      </span>
+      <span class="detail-meta-item">
+        <span class="detail-meta-label">마을명</span>
+        <!-- JSP: ${article.villageName} -->
+        <span class="detail-meta-value">진월마을</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- ========================================
+       상세 본문
+       - 본문 내용 및 이미지
+  ======================================== -->
+  <div class="detail-content">
+    <!-- JSP: ${article.content} -->
+    <p>2026년 진월동 주민총회 마을의제 상정</p>
+    <p>
+      달빛 모기장 영화제 -<br>
+      관내 학교 운동장, 테니스장 등을 활용하여 주민 모두가 함께 즐기는 야외 영화제 개최
+    </p>
+    
+    <!-- 본문 이미지 -->
+    <div class="detail-image">
+      <!-- JSP: <c:forEach items="${article.images}" var="image"> -->
+      <img src="https://picsum.photos/800/500?random=10" alt="달빛 모기장 영화제">
+      <!-- JSP: </c:forEach> -->
+    </div>
+  </div>
+
+  <!-- ========================================
+       좋아요/공유 버튼 (액션 박스)
+       - 클래스: action-box (공통), detail-actions (상세페이지용 가운데 정렬)
+       - 좋아요 클릭 시: action-box-btn active 클래스 추가
+  ======================================== -->
+  <div class="action-box detail-actions">
+    <!-- 좋아요 버튼: 클릭 시 active 클래스 토글 -->
+    <button type="button" class="action-box-btn" id="likeBtn">
+      <img src="/images/ic_good_orange.svg" alt="좋아요">
+      <span>좋아요 <span id="likeCount"></span></span>
+    </button>
+    <span class="action-box-divider">|</span>
+    <button type="button" class="action-box-btn">
+      <img src="/images/ic_share.svg" alt="공유하기">
+      <span>공유하기</span>
+    </button>
+  </div>
+
+  <!-- 
+    [JSP/JavaScript 가이드]
+    좋아요 토글 JavaScript:
+    
+    let isLiked = false;
+    let likeCount = 0; // 서버에서 초기값 받아오기
+    const likeBtn = document.getElementById('likeBtn');
+    const likeCountEl = document.getElementById('likeCount');
+    
+    likeBtn.addEventListener('click', function() {
+      if (isLiked) {
+        likeCount--;
+        this.classList.remove('active');
+      } else {
+        likeCount++;
+        this.classList.add('active');
+      }
+      isLiked = !isLiked;
+      likeCountEl.textContent = likeCount > 0 ? likeCount : '';
+      
+      // AJAX로 서버에 좋아요 상태 전송
+      // fetch('/api/like', { method: 'POST', body: JSON.stringify({ articleId, isLiked }) });
+    });
+  -->
+
+  <!-- ========================================
+       댓글 영역
+  ======================================== -->
+  <div class="comment-section">
+    <h2 class="comment-title">댓글 <span class="comment-count">1</span></h2>
+    
+    <!-- 댓글 입력 폼 -->
+    <div class="comment-form">
+      <textarea 
+        class="comment-input" 
+        id="commentInput"
+        placeholder="댓글을 입력하세요."
+        rows="3"
+      ></textarea>
+      <!-- 
+        등록 버튼 활성화:
+        - 기본: comment-submit-btn (비활성화 상태)
+        - 입력 시: comment-submit-btn active (활성화 상태)
+      -->
+      <button type="button" class="comment-submit-btn" id="commentSubmitBtn" disabled>등록</button>
+    </div>
+
+    <!-- 
+      [JSP/JavaScript 가이드]
+      댓글 입력 시 버튼 활성화 JavaScript:
+      
+      const commentInput = document.getElementById('commentInput');
+      const submitBtn = document.getElementById('commentSubmitBtn');
+      
+      commentInput.addEventListener('input', function() {
+        if (this.value.trim()) {
+          submitBtn.classList.add('active');
+          submitBtn.disabled = false;
+        } else {
+          submitBtn.classList.remove('active');
+          submitBtn.disabled = true;
+        }
+      });
+    -->
+
+    <!-- 댓글 목록 -->
+    <div class="comment-list">
+      
+      <!-- 
+        댓글 아이템
+        JSP: <c:forEach items="${comments}" var="comment">
+      -->
+      <div class="comment-item">
+        <div class="comment-profile">
+          <!-- 
+            프로필 이미지 클래스:
+            - basic: 일반 사용자
+            - master: 관리자 (마을e척척)
+          -->
+          <div class="profile-image basic"></div>
+        </div>
+        <div class="comment-body">
+          <div class="comment-info">
+            <!-- JSP: ${comment.authorName} -->
+            <span class="comment-author">달봉맘</span>
+            <!-- JSP: ${comment.createdAt} -->
+            <span class="comment-date">2025-10-11 09:32:15</span>
+          </div>
+          <!-- JSP: ${comment.content} -->
+          <p class="comment-text">안심 산책길을 조성하면 늦은 밤에도 산책할 수 있어서 좋을 것 같습니다 ^^</p>
+        </div>
+      </div>
+
+      <!-- 댓글 아이템 2 -->
+      <div class="comment-item">
+        <div class="comment-profile">
+          <div class="profile-image master"></div>
+        </div>
+        <div class="comment-body">
+          <div class="comment-info">
+            <span class="comment-author">새싹별이콩께</span>
+            <span class="comment-date">2025-10-12 11:23:04</span>
+          </div>
+          <p class="comment-text">독거노인분들의 일상과 안전을 함께 살피는 좋은 정책이라고 생각합니다. 가족들도 안심할 수 있을 것 같아요.</p>
+        </div>
+      </div>
+      <!-- JSP: </c:forEach> -->
+      
+    </div>
+
+    <!-- 
+      더보기/접기 버튼
+      - 댓글이 5개 초과일 때만 표시
+      - JSP: <c:if test="${comments.size() > 5}">
+    -->
+    <button type="button" class="comment-more-btn" id="commentMoreBtn">
+      더보기 (2개)
+    </button>
+    <!-- JSP: </c:if> -->
+
+    <!-- 
+      [JSP/JavaScript 가이드]
+      댓글 더보기/접기 JavaScript:
+      
+      const COMMENTS_TO_SHOW = 5;
+      let showAll = false;
+      const commentList = document.getElementById('commentList');
+      const commentItems = commentList.querySelectorAll('.comment-item');
+      const moreBtn = document.getElementById('commentMoreBtn');
+      const totalComments = commentItems.length;
+      
+      // 초기 상태: 5개만 표시
+      function updateCommentVisibility() {
+        commentItems.forEach((item, index) => {
+          if (showAll || index < COMMENTS_TO_SHOW) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+        
+        if (showAll) {
+          moreBtn.textContent = '접기';
+        } else {
+          moreBtn.textContent = `더보기 (${totalComments - COMMENTS_TO_SHOW}개)`;
+        }
+      }
+      
+      // 버튼 클릭 시 토글
+      moreBtn.addEventListener('click', function() {
+        showAll = !showAll;
+        updateCommentVisibility();
+      });
+      
+      // 초기화
+      if (totalComments <= COMMENTS_TO_SHOW) {
+        moreBtn.style.display = 'none';
+      }
+      updateCommentVisibility();
+    -->
+  </div>
+
+</div>
+
+</body>
+</html>
+

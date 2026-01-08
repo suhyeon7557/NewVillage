@@ -189,80 +189,69 @@
 
 
 <!-- ========================================
-     3. 상태형 카드 (status)
+     3. 상태형 카드 (갤러리형 + 상태/기간)
+     ----------------------------------------
+     [상태 클래스]
+     - pending: 대기 (파란색)
+     - progress: 진행 (주황색)
+     - paused: 정지 (빨간색)
+     - complete: 종료 (회색)
 ======================================== -->
 <div class="section">
-  <h2 class="section-title">3. 상태형 카드 (진행중/완료/대기)</h2>
+  <h2 class="section-title">3. 상태형 갤러리 카드</h2>
   
   <div class="card-grid">
     
-    <!-- 진행중 -->
-    <div class="card card-text">
+    <!-- 진행 -->
+    <div class="card card-gallery">
+      <div class="card-thumbnail">
+        <img src="https://picsum.photos/200/150?random=3" alt="동운마을 안심등교 아침길">
+      </div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="card-status progress">진행중</span>
-          <span class="card-village">[진월동]진월마을</span>
+          <span class="card-status progress">진행</span>
+          <span class="card-village">[운암1동]운암1마을</span>
         </div>
-        
-        <h3 class="card-title">2026년 마을총회 의제 투표</h3>
-        
-        <p class="card-content">진월동 주민총회 마을의제 선정을 위한 투표입니다.</p>
-        
-        <!-- 기간 -->
-        <p class="card-period">2025.09.01 ~ 2025.09.30</p>
-        
+        <h3 class="card-title">[마을리빙랩] 동운마을 안심등교 아침길</h3>
+        <p class="card-content">마을e척척 마을리빙랩(동운마을) 안심등교 아침길 이야기입니다.</p>
         <div class="card-footer">
-          <div class="profile">
-            <div class="profile-image master"></div>
-            <div class="profile-info">
-              <span class="profile-name">마을e척척</span>
-            </div>
-          </div>
-          
+          <span class="card-period">2025-10-15 ~ 2025-10-25</span>
           <div class="engagement">
             <span class="engagement-item engagement-likes">
               <img src="/images/ic_good.svg" alt="좋아요">
-              <span>12</span>
+              <span>4</span>
             </span>
             <span class="engagement-item engagement-comments">
               <img src="/images/ic_talk.svg" alt="댓글">
-              <span>3</span>
+              <span>0</span>
             </span>
           </div>
         </div>
       </div>
     </div>
     
-    <!-- 완료 -->
-    <div class="card card-text">
+    <!-- 대기 -->
+    <div class="card card-gallery">
+      <div class="card-thumbnail">
+        <img src="https://picsum.photos/200/150?random=4" alt="마을 축제 투표">
+      </div>
       <div class="card-body">
         <div class="card-meta">
-          <span class="card-status complete">완료</span>
-          <span class="card-village">[학운동]무꽃동마을</span>
+          <span class="card-status pending">대기</span>
+          <span class="card-village">[진월동]진월마을</span>
         </div>
-        
-        <h3 class="card-title">2025년 마을총회 의제 투표</h3>
-        
-        <p class="card-content">학운동 주민총회 마을의제 선정 투표가 완료되었습니다.</p>
-        
-        <p class="card-period">2024.09.01 ~ 2024.09.30</p>
-        
+        <h3 class="card-title">2026년 진월동 마을축제 주제 선정 투표</h3>
+        <p class="card-content">진월동 마을축제 주제를 선정하기 위한 주민 투표입니다.</p>
         <div class="card-footer">
-          <div class="profile">
-            <div class="profile-image master"></div>
-            <div class="profile-info">
-              <span class="profile-name">마을e척척</span>
-            </div>
-          </div>
-          
+          <span class="card-period">2025-11-01 ~ 2025-11-15</span>
           <div class="engagement">
             <span class="engagement-item engagement-likes">
               <img src="/images/ic_good.svg" alt="좋아요">
-              <span>25</span>
+              <span>2</span>
             </span>
             <span class="engagement-item engagement-comments">
               <img src="/images/ic_talk.svg" alt="댓글">
-              <span>8</span>
+              <span>1</span>
             </span>
           </div>
         </div>
@@ -274,10 +263,137 @@
 
 
 <!-- ========================================
-     4. 카테고리형 카드
+     4. 마을총회 투표 카드 (4열 그리드)
+     ----------------------------------------
+     [상태 클래스]
+     - pending: 대기 (파란색)
+     - progress: 진행 (주황색)
+     - paused: 정지 (빨간색)
+     - complete: 종료 (회색)
 ======================================== -->
 <div class="section">
-  <h2 class="section-title">4. 카테고리형 카드</h2>
+  <h2 class="section-title">4. 마을총회 현장투표 (4열 그리드)</h2>
+  
+  <!-- card-grid-vote: 4열 그리드 / 768px 이하 2열 / 480px 이하 1열 -->
+  <div class="card-grid-vote">
+    
+    <!-- 진행 -->
+    <div class="card card-vote">
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-status progress">진행</span>
+          <span class="card-village">[진월동]진월마을</span>
+        </div>
+        <h3 class="card-title">현장투표 ② 2025 학운동 주민총회...</h3>
+        <p class="card-content">공익형법인설립 의제 내용에 공감하시나요? (1~5점 투표) ※ 본 투표는 학운동 중장기마을계획 실행을 위한 마을의제 공감 정도를...</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-footer-row">
+          <span class="card-period">2025-08-12 ~ 2025-08-19</span>
+          <div class="engagement">
+            <span class="engagement-item engagement-likes">
+              <img src="/images/ic_good.svg" alt="좋아요">
+              <span>4</span>
+            </span>
+            <span class="engagement-item engagement-comments">
+              <img src="/images/ic_talk.svg" alt="댓글">
+              <span>0</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 대기 -->
+    <div class="card card-vote">
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-status pending">대기</span>
+          <span class="card-village">[운암1동]운암마을</span>
+        </div>
+        <h3 class="card-title">2026년 마을 예산 우선순위 투표</h3>
+        <p class="card-content">내년도 마을 예산 사용 우선순위를 결정하기 위한 투표입니다.</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-footer-row">
+          <span class="card-period">2025-09-01 ~ 2025-09-15</span>
+          <div class="engagement">
+            <span class="engagement-item engagement-likes">
+              <img src="/images/ic_good.svg" alt="좋아요">
+              <span>2</span>
+            </span>
+            <span class="engagement-item engagement-comments">
+              <img src="/images/ic_talk.svg" alt="댓글">
+              <span>1</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 정지 -->
+    <div class="card card-vote">
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-status paused">정지</span>
+          <span class="card-village">[학운동]무꽃동마을</span>
+        </div>
+        <h3 class="card-title">마을 공동텃밭 운영 방식 선정</h3>
+        <p class="card-content">일시적으로 투표가 정지되었습니다. 추후 공지 예정입니다.</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-footer-row">
+          <span class="card-period">2025-07-20 ~ 2025-07-30</span>
+          <div class="engagement">
+            <span class="engagement-item engagement-likes">
+              <img src="/images/ic_good.svg" alt="좋아요">
+              <span>8</span>
+            </span>
+            <span class="engagement-item engagement-comments">
+              <img src="/images/ic_talk.svg" alt="댓글">
+              <span>3</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 종료 -->
+    <div class="card card-vote">
+      <div class="card-body">
+        <div class="card-meta">
+          <span class="card-status complete">종료</span>
+          <span class="card-village">[광주]광주마을</span>
+        </div>
+        <h3 class="card-title">주민자치센터 프로그램 선호도 조사</h3>
+        <p class="card-content">투표가 종료되었습니다. 결과는 마을게시판에서 확인하실 수 있습니다.</p>
+      </div>
+      <div class="card-footer">
+        <div class="card-footer-row">
+          <span class="card-period">2025-06-01 ~ 2025-06-30</span>
+          <div class="engagement">
+            <span class="engagement-item engagement-likes">
+              <img src="/images/ic_good.svg" alt="좋아요">
+              <span>25</span>
+            </span>
+            <span class="engagement-item engagement-comments">
+              <img src="/images/ic_talk.svg" alt="댓글">
+              <span>12</span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+<!-- ========================================
+     5. 카테고리형 카드
+======================================== -->
+<div class="section">
+  <h2 class="section-title">5. 카테고리형 카드</h2>
   
   <div class="card-grid">
     

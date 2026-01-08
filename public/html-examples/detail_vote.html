@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>투표 상세 페이지</title>
+  <link rel="stylesheet" href="../styles/common.css">
+</head>
+<body>
+
+<!-- 투표 상세 페이지 (Detail Vote Page) -->
+<div class="detail-page">
+  
+  <!-- 상세 헤더 - 투표용 (상태 + 제목) -->
+  <div class="detail-header">
+    <div class="detail-header-top">
+      <!-- 
+        상태 클래스:
+        - pending: 대기 (파란색)
+        - progress: 진행 (주황색)
+        - paused: 정지 (빨간색)
+        - complete: 종료 (회색)
+      -->
+      <span class="card-status progress">진행</span>
+      <h1 class="detail-title">2025 진월동 주민총회 현장투표</h1>
+    </div>
+    <div class="detail-meta">
+      <span class="detail-meta-item">
+        <span class="detail-meta-label">기간</span>
+        <!-- JSP: ${vote.startDate} ~ ${vote.endDate} -->
+        <span class="detail-meta-value">2025-10-15 ~ 2025-10-25</span>
+      </span>
+      <span class="detail-meta-item">
+        <span class="detail-meta-label">조회수</span>
+        <span class="detail-meta-value">231</span>
+      </span>
+      <span class="detail-meta-item">
+        <span class="detail-meta-label">마을명</span>
+        <span class="detail-meta-value">진월마을</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- 상세 본문 -->
+  <div class="detail-content">
+    <p>광주광역시 남구 「주민자치회 설치·운영에 관한 조례」 제16조에 따라 다음과 같이 마을의제 주민투표를 실시합니다.</p>
+    <p>이번 주민투표를 통해 선정된 마을의제는 온라인 사전투표와 현장투표 결과를 합산하여 우선순위를 결정하며, 주민총회(2025. 10. 25.) 당일 최종 결과가 발표됩니다.</p>
+    <p>※ 주민투표의 신뢰성과 공정성을 위해 사전투표에 참여하신 주민께서는 본투표에 중복 기표하지 마시고 잠시 기다려주시기 바랍니다.</p>
+    <br>
+    <p><strong>[ 참고사항 ]</strong></p>
+    <p>- 투표결과에 따라 마을 의제의 우선순위가 결정됩니다.</p>
+    <p>- 아래 7개 의제 중 3가지를 선택하여 투표해주시기 바랍니다.</p>
+  </div>
+
+  <!-- 투표 영역 1 - 텍스트형 (여러 그룹 가능) -->
+  <div class="vote-section">
+    <!-- 투표 그룹 1 -->
+    <div class="vote-group">
+      <div class="vote-header">
+        <div class="vote-header-left">
+          <img src="/images/ic_vote.svg" alt="투표" class="vote-icon">
+          <span class="vote-header-title">마을 의제 투표</span>
+        </div>
+        <span class="vote-header-deadline">8월 17일 20시 종료</span>
+      </div>
+      
+      <div class="vote-list">
+        <!-- 투표 항목 1 - 1순위 -->
+        <div class="vote-item-wrap">
+          <div class="vote-item top-rank" onclick="toggleVote(this)">
+            <div class="vote-gauge" style="width: 48.5%;"></div>
+            <input type="checkbox" class="vote-checkbox" name="vote1" value="1">
+            <div class="vote-item-inner">
+              <div class="vote-item-left">
+                <img src="/images/ic_check_purple.svg" alt="선택됨" class="vote-check-icon">
+                <span class="vote-item-title">푸른길 공원 안심산책길 조성</span>
+                <button type="button" class="vote-search-btn" onclick="event.stopPropagation(); openPopup(1);">
+                  <img src="/images/ic_search_black.svg" alt="상세보기">
+                </button>
+              </div>
+              <span class="vote-item-result">48.5% (147표)</span>
+            </div>
+          </div>
+          <div class="vote-item-count">온라인 147명, 오프라인 0명</div>
+        </div>
+
+        <!-- 투표 항목 2 -->
+        <div class="vote-item-wrap">
+          <div class="vote-item" onclick="toggleVote(this)">
+            <div class="vote-gauge" style="width: 35.6%;"></div>
+            <input type="checkbox" class="vote-checkbox" name="vote1" value="2">
+            <div class="vote-item-inner">
+              <div class="vote-item-left">
+                <img src="/images/ic_check_purple.svg" alt="선택됨" class="vote-check-icon">
+                <span class="vote-item-title">독거노인지킴이, 스마트 돌봄 마을</span>
+                <button type="button" class="vote-search-btn" onclick="event.stopPropagation(); openPopup(2);">
+                  <img src="/images/ic_search_black.svg" alt="상세보기">
+                </button>
+              </div>
+              <span class="vote-item-result">35.6% (108표)</span>
+            </div>
+          </div>
+          <div class="vote-item-count">온라인 108명, 오프라인 0명</div>
+        </div>
+
+        <!-- 투표 항목 3 -->
+        <div class="vote-item-wrap">
+          <div class="vote-item" onclick="toggleVote(this)">
+            <div class="vote-gauge" style="width: 35.3%;"></div>
+            <input type="checkbox" class="vote-checkbox" name="vote1" value="3">
+            <div class="vote-item-inner">
+              <div class="vote-item-left">
+                <img src="/images/ic_check_purple.svg" alt="선택됨" class="vote-check-icon">
+                <span class="vote-item-title">분리배출 및 재활용 캠페인</span>
+                <button type="button" class="vote-search-btn" onclick="event.stopPropagation(); openPopup(3);">
+                  <img src="/images/ic_search_black.svg" alt="상세보기">
+                </button>
+              </div>
+              <span class="vote-item-result">35.3% (107표)</span>
+            </div>
+          </div>
+          <div class="vote-item-count">온라인 107명, 오프라인 0명</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 투표 그룹 2 -->
+    <div class="vote-group">
+      <div class="vote-header">
+        <div class="vote-header-left">
+          <img src="/images/ic_vote.svg" alt="투표" class="vote-icon">
+          <span class="vote-header-title">추가 의제 투표</span>
+        </div>
+        <span class="vote-header-deadline">8월 17일 20시 종료</span>
+      </div>
+      
+      <div class="vote-list">
+        <!-- 투표 항목 1 - 1순위 -->
+        <div class="vote-item-wrap">
+          <div class="vote-item top-rank" onclick="toggleVote(this)">
+            <div class="vote-gauge" style="width: 65%;"></div>
+            <input type="checkbox" class="vote-checkbox" name="vote2" value="1">
+            <div class="vote-item-inner">
+              <div class="vote-item-left">
+                <img src="/images/ic_check_purple.svg" alt="선택됨" class="vote-check-icon">
+                <span class="vote-item-title">주민 편의시설 확충</span>
+                <button type="button" class="vote-search-btn" onclick="event.stopPropagation(); openPopup(5);">
+                  <img src="/images/ic_search_black.svg" alt="상세보기">
+                </button>
+              </div>
+              <span class="vote-item-result">65% (89표)</span>
+            </div>
+          </div>
+          <div class="vote-item-count">온라인 89명, 오프라인 0명</div>
+        </div>
+
+        <!-- 투표 항목 2 -->
+        <div class="vote-item-wrap">
+          <div class="vote-item" onclick="toggleVote(this)">
+            <div class="vote-gauge" style="width: 35%;"></div>
+            <input type="checkbox" class="vote-checkbox" name="vote2" value="2">
+            <div class="vote-item-inner">
+              <div class="vote-item-left">
+                <img src="/images/ic_check_purple.svg" alt="선택됨" class="vote-check-icon">
+                <span class="vote-item-title">마을 축제 개최</span>
+                <button type="button" class="vote-search-btn" onclick="event.stopPropagation(); openPopup(6);">
+                  <img src="/images/ic_search_black.svg" alt="상세보기">
+                </button>
+              </div>
+              <span class="vote-item-result">35% (48표)</span>
+            </div>
+          </div>
+          <div class="vote-item-count">온라인 48명, 오프라인 0명</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 투표 영역 2 - 이미지+텍스트형 -->
+  <div class="vote-section">
+    <div class="vote-header">
+      <div class="vote-header-left">
+        <img src="/images/ic_vote.svg" alt="투표" class="vote-icon">
+        <span class="vote-header-title">마을 로고 선정 투표</span>
+      </div>
+      <span class="vote-header-deadline">8월 20일 18시 종료</span>
+    </div>
+    
+    <!-- 
+      이미지+텍스트형 투표:
+      - vote-list-image: 그리드 레이아웃
+      - vote-item-image: 각 투표 항목
+      - top-rank: 1순위
+      - selected: 선택된 상태
+    -->
+    <div class="vote-list-image">
+      <div class="vote-item-image top-rank" onclick="toggleImageVote(this)">
+        <input type="checkbox" class="vote-checkbox" name="vote3" value="1">
+        <img src="/images/ic_check_purple.svg" alt="선택됨" class="vote-check-icon">
+        <img src="/images/image_subpage.svg" alt="후보1" class="vote-item-image-thumb">
+        <div class="vote-item-image-body">
+          <div class="vote-item-image-title">자연과 함께하는 마을</div>
+          <div class="vote-item-image-result">45% (62표)</div>
+        </div>
+      </div>
+      <div class="vote-item-image" onclick="toggleImageVote(this)">
+        <input type="checkbox" class="vote-checkbox" name="vote3" value="2">
+        <img src="/images/ic_check_purple.svg" alt="선택됨" class="vote-check-icon">
+        <img src="/images/image_subpage.svg" alt="후보2" class="vote-item-image-thumb">
+        <div class="vote-item-image-body">
+          <div class="vote-item-image-title">행복한 우리 마을</div>
+          <div class="vote-item-image-result">32% (44표)</div>
+        </div>
+      </div>
+      <div class="vote-item-image selected" onclick="toggleImageVote(this)">
+        <input type="checkbox" class="vote-checkbox" name="vote3" value="3" checked>
+        <img src="/images/ic_check_purple.svg" alt="선택됨" class="vote-check-icon">
+        <img src="/images/image_subpage.svg" alt="후보3" class="vote-item-image-thumb">
+        <div class="vote-item-image-body">
+          <div class="vote-item-image-title">함께 성장하는 마을</div>
+          <div class="vote-item-image-result">23% (32표)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 투표 영역 3 - 별점형 -->
+  <div class="vote-section">
+    <div class="vote-header">
+      <div class="vote-header-left">
+        <img src="/images/ic_vote.svg" alt="투표" class="vote-icon">
+        <span class="vote-header-title">마을 행사 만족도 평가</span>
+      </div>
+      <span class="vote-header-deadline">8월 25일 24시 종료</span>
+    </div>
+    
+    <!-- 
+      별점형 투표:
+      - vote-list-rating: 별점 리스트 컨테이너
+      - vote-item-rating: 각 평가 항목
+      - vote-star.active: 활성화된 별
+    -->
+    <div class="vote-list-rating">
+      <div class="vote-item-rating">
+        <span class="vote-item-rating-title">행사 프로그램 만족도</span>
+        <div class="vote-item-rating-stars" data-rating="4">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star active" onclick="setRating(this, 1)">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star active" onclick="setRating(this, 2)">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star active" onclick="setRating(this, 3)">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star active" onclick="setRating(this, 4)">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star" onclick="setRating(this, 5)">
+        </div>
+        <span class="vote-item-rating-score">4.2점</span>
+      </div>
+      <div class="vote-item-rating">
+        <span class="vote-item-rating-title">행사 진행 만족도</span>
+        <div class="vote-item-rating-stars" data-rating="3">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star active" onclick="setRating(this, 1)">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star active" onclick="setRating(this, 2)">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star active" onclick="setRating(this, 3)">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star" onclick="setRating(this, 4)">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star" onclick="setRating(this, 5)">
+        </div>
+        <span class="vote-item-rating-score">3.8점</span>
+      </div>
+      <div class="vote-item-rating">
+        <span class="vote-item-rating-title">시설 및 환경 만족도</span>
+        <div class="vote-item-rating-stars" data-rating="5">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star active" onclick="setRating(this, 1)">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star active" onclick="setRating(this, 2)">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star active" onclick="setRating(this, 3)">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star active" onclick="setRating(this, 4)">
+          <img src="/images/ic_star.svg" alt="별" class="vote-star active" onclick="setRating(this, 5)">
+        </div>
+        <span class="vote-item-rating-score">4.8점</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 좋아요/공유 버튼 -->
+  <div class="action-box detail-actions">
+    <button type="button" class="action-box-btn" id="likeBtn">
+      <img src="/images/ic_good_orange.svg" alt="좋아요">
+      <span>좋아요 <span id="likeCount"></span></span>
+    </button>
+    <span class="action-box-divider">|</span>
+    <button type="button" class="action-box-btn">
+      <img src="/images/ic_share.svg" alt="공유하기">
+      <span>공유하기</span>
+    </button>
+  </div>
+
+  <!-- 댓글 영역 -->
+  <div class="comment-section">
+    <h2 class="comment-title">댓글 <span class="comment-count">1</span></h2>
+    
+    <div class="comment-form">
+      <textarea class="comment-input" id="commentInput" placeholder="댓글을 입력하세요." rows="3"></textarea>
+      <button type="button" class="comment-submit-btn" id="commentSubmitBtn" disabled>등록</button>
+    </div>
+
+    <div class="comment-list">
+      <div class="comment-item">
+        <div class="comment-profile">
+          <div class="profile-image basic"></div>
+        </div>
+        <div class="comment-body">
+          <div class="comment-info">
+            <span class="comment-author">달봉맘</span>
+            <span class="comment-date">2025-10-11 09:32:15</span>
+          </div>
+          <p class="comment-text">안심 산책길을 조성하면 늦은 밤에도 산책할 수 있어서 좋을 것 같습니다 ^^</p>
+        </div>
+      </div>
+
+      <div class="comment-item">
+        <div class="comment-profile">
+          <div class="profile-image master"></div>
+        </div>
+        <div class="comment-body">
+          <div class="comment-info">
+            <span class="comment-author">새싹별이콩께</span>
+            <span class="comment-date">2025-10-12 11:23:04</span>
+          </div>
+          <p class="comment-text">독거노인분들의 일상과 안전을 함께 살피는 좋은 정책이라고 생각합니다. 가족들도 안심할 수 있을 것 같아요.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!--
+  [JSP/JavaScript 가이드]
+  
+  1. 투표 선택 토글:
+  function toggleVote(element) {
+    const checkbox = element.querySelector('.vote-checkbox');
+    const isSelected = element.classList.contains('selected');
+    
+    if (isSelected) {
+      element.classList.remove('selected');
+      checkbox.checked = false;
+    } else {
+      element.classList.add('selected');
+      checkbox.checked = true;
+    }
+  }
+  
+  // 이미지형 투표 토글:
+  function toggleImageVote(element) {
+    const checkbox = element.querySelector('.vote-checkbox');
+    const isSelected = element.classList.contains('selected');
+    
+    if (isSelected) {
+      element.classList.remove('selected');
+      checkbox.checked = false;
+    } else {
+      element.classList.add('selected');
+      checkbox.checked = true;
+    }
+  }
+  
+  // 별점 설정:
+  function setRating(starElement, rating) {
+    const container = starElement.closest('.vote-item-rating-stars');
+    const stars = container.querySelectorAll('.vote-star');
+    const scoreElement = starElement.closest('.vote-item-rating').querySelector('.vote-item-rating-score');
+    
+    stars.forEach((star, index) => {
+      if (index < rating) {
+        star.classList.add('active');
+      } else {
+        star.classList.remove('active');
+      }
+    });
+    
+    container.setAttribute('data-rating', rating);
+    scoreElement.textContent = rating + '.0점';
+  }
+  
+  2. 팝업 열기 (상세보기 버튼):
+  function openPopup(itemId) {
+    // TODO: 팝업 컴포넌트와 연동
+    console.log('팝업 열기:', itemId);
+  }
+  
+  3. 투표 제출:
+  function submitVote() {
+    const checkboxes = document.querySelectorAll('.vote-checkbox:checked');
+    const selectedValues = Array.from(checkboxes).map(cb => cb.value);
+    
+    if (selectedValues.length === 0) {
+      alert('최소 1개 항목을 선택해주세요.');
+      return;
+    }
+    
+    // AJAX로 서버에 투표 제출
+    fetch('/api/vote', {
+      method: 'POST',
+      body: JSON.stringify({ voteId: 1, selectedItems: selectedValues })
+    });
+  }
+-->
+
+</body>
+</html>
+

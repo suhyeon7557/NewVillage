@@ -2,9 +2,9 @@
 @import "./styles/layout.css";
 @import "./styles/common.css";
 
-/* ========================================
+/*
    S-Core Dream 폰트 정의
-======================================== */
+*/
 @font-face {
   font-family: 'S-Core Dream';
   src: url('/fonts/SCDream4.otf') format('opentype');
@@ -29,9 +29,9 @@
   font-display: swap;
 }
 
-/* ========================================
+/*
    CSS 변수 정의
-======================================== */
+*/
 :root {
   /* 메인 컬러 */
   --color-primary-yellow: #FFAE00;
@@ -54,7 +54,9 @@
   
   /* 보더 컬러 */
   --color-border: #e0e0e0;
-  
+  --color-border-light: #dbdbdb;
+  --color-border-gray: #999;
+
   /* 레이아웃 */
   --content-max-width: 1400px;
   --header-height: 70px;
@@ -72,14 +74,15 @@
   /* 간격 */
   --spacing-xs: 0.25rem;         /* 4px */
   --spacing-sm: 0.5rem;          /* 8px */
+  --spacing-smd: 0.75rem;        /* 12px */
   --spacing-md: 1rem;            /* 16px */
   --spacing-lg: 1.5rem;          /* 24px */
   --spacing-xl: 2rem;            /* 32px */
 }
 
-/* ========================================
+/*
    리셋 및 기본 스타일
-======================================== */
+*/
 * {
   margin: 0;
   padding: 0;
@@ -120,14 +123,13 @@ img {
   height: auto;
 }
 
-/* ========================================
+/*
    공통 레이아웃
-======================================== */
+*/
 .container {
   width: 100%;
   max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 0 20px;
 }
 
 .flex-center {
@@ -161,9 +163,9 @@ img {
   flex-shrink: 0;
 }
 
-/* ========================================
+/*
    반응형 (공통)
-======================================== */
+*/
 @media (max-width: 1440px) {
   .container {
     padding: 0 40px;

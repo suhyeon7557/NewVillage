@@ -1,0 +1,77 @@
+/**
+ * 팝업 페이지 전용 스타일
+ * - 단독 페이지로 팝업을 표시할 때 사용
+ */
+
+/* 팝업 페이지 배경 */
+body {
+  background-color: rgba(0, 0, 0, 0.5);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+}
+
+/* 팝업 컨테이너 */
+.popup-container {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+}
+
+.popup-container-lg {
+  max-width: 720px;
+}
+
+/* 오버레이 숨김 (단독 페이지에서는 불필요) */
+.popup-overlay {
+  display: none;
+}
+
+/* 팝업 콘텐츠 */
+.popup-content {
+  position: relative;
+  animation: popupFadeIn 0.3s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* 팝업 등장 애니메이션 */
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  body {
+    padding: var(--spacing-sm);
+    align-items: flex-start;
+    padding-top: var(--spacing-lg);
+  }
+  
+  .popup-container,
+  .popup-container-lg {
+    max-width: 100%;
+  }
+  
+  .popup-content {
+    max-height: calc(100vh - var(--spacing-xl));
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: var(--spacing-xs);
+    padding-top: var(--spacing-md);
+  }
+}
+
+

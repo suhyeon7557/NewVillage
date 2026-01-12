@@ -1,0 +1,654 @@
+/*
+   ========================================
+   우리마을 페이지 전용 스타일
+   ========================================
+*/
+
+/*
+   ========================================
+   마을 상세 페이지 레이아웃 (사이드바 + 메인)
+   ========================================
+*/
+.village-layout {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: flex-start;
+}
+
+/* 왼쪽 사이드바 */
+.village-sidebar {
+  flex-shrink: 0;
+  width: 200px;
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* 마을 프로필 영역 */
+.village-profile {
+  padding: var(--spacing-sm);
+  text-align: center;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.village-profile-image {
+  max-width: 100%;
+  min-width: 150px;
+  height: 150px;
+  margin: 0 auto var(--spacing-md);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--color-border-light);
+}
+
+.village-profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.village-profile-content {
+  flex: 1;
+}
+
+.village-profile-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.village-profile-info {
+  text-align: left;
+  padding-bottom: var(--spacing-md);
+}
+
+.village-info-row {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  padding: 0.1rem 0;
+}
+
+.village-info-row:not(:last-child) {
+  border-bottom: 1px dashed var(--border-light);
+}
+
+.village-info-label {
+  flex: 0 0 35%;
+  color: var(--text-tertiary);
+}
+
+.village-info-value {
+  flex: 0 0 65%;
+  color: var(--text-primary);
+  font-weight: 500;
+  text-align: left;
+}
+
+.village-info-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 0 60%;
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  text-align: left;
+}
+
+.village-info-link .info-link-icon {
+  width: 10px;
+  height: 10px;
+}
+
+.village-info-link:hover {
+  text-decoration: underline;
+}
+
+/* 사이드 네비게이션 */
+.village-nav {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  gap: 7px;
+  padding: var(--spacing-lg) 0;
+}
+
+.village-nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  padding: var(--spacing-smd) var(--spacing-lg);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9375rem;
+  background: transparent;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.1s ease-out;
+}
+
+.village-nav-item:hover {
+  background: #f8f9fa;
+  color: var(--text-primary);
+}
+
+.village-nav-item:active {
+  transform: translateY(3px);
+}
+
+.village-nav-item.active {
+  background-color: #414141;
+  color: #fff;
+  font-weight: 600;
+}
+
+.village-nav-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* 기본 상태: gray 아이콘 표시, white 아이콘 숨김 */
+.village-nav-item .icon-gray {
+  display: block;
+}
+
+.village-nav-item .icon-white {
+  display: none;
+}
+
+/* active 상태: gray 아이콘 숨김, white 아이콘 표시 */
+.village-nav-item.active .icon-gray {
+  display: none;
+}
+
+.village-nav-item.active .icon-white {
+  display: block;
+}
+
+/* 오른쪽 메인 콘텐츠 */
+.village-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+
+/*
+   ========================================
+   카드 카테고리 태그 색상
+   ========================================
+*/
+.card-category {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+/* 마을소통 - Green */
+.card-category.cat-communication {
+  background: rgba(81, 215, 47, 0.15);
+  color: #2E7D32;
+}
+
+/* 마을알림 - Orange */
+.card-category.cat-notice {
+  background: rgba(255, 174, 0, 0.15);
+  color: #F57C00;
+}
+
+/* 마을질문 - Blue */
+.card-category.cat-question {
+  background: rgba(76, 160, 255, 0.15);
+  color: #1565C0;
+}
+
+
+/* 마을 카드 그리드 */
+.village-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+}
+
+/* 마을 카드 */
+.village-card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.village-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.village-card-logo {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.village-card-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.village-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.village-card-name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.village-card-stats {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.village-stat {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+}
+
+.village-stat .stat-icon {
+  width: 14px;
+  height: 14px;
+  opacity: 0.6;
+}
+
+.village-stat .stat-value {
+  color: var(--text-secondary);
+}
+
+
+/*
+   ========================================
+   구별 태그 색상
+   ========================================
+*/
+.village-district-tag {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  /* 기본 색상 (동구) */
+  background: rgba(81, 215, 47, 0.15);
+  color: #2E7D32;
+}
+
+/* 동구 - Green */
+.village-district-tag.district-donggu {
+  background: rgba(81, 215, 47, 0.15);
+  color: #2E7D32;
+}
+
+/* 서구 - Blue */
+.village-district-tag.district-seogu {
+  background: rgba(76, 160, 255, 0.15);
+  color: #1565C0;
+}
+
+/* 남구 - Orange */
+.village-district-tag.district-namgu {
+  background: rgba(255, 103, 51, 0.15);
+  color: #E65100;
+}
+
+/* 북구 - Purple */
+.village-district-tag.district-bukgu {
+  background: rgba(99, 105, 221, 0.15);
+  color: #5E35B1;
+}
+
+/* 광산구 - Yellow */
+.village-district-tag.district-gwangsangu {
+  background: rgba(255, 174, 0, 0.15);
+  color: #F57C00;
+}
+
+/* 광주 - Green Dark */
+.village-district-tag.district-gwangju {
+  background: rgba(26, 129, 0, 0.15);
+  color: #1A8100;
+}
+
+
+/*
+   ========================================
+   반응형 스타일
+   ========================================
+*/
+
+/* 태블릿 (1024px 이하) */
+@media (max-width: 1024px) {
+  .village-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* 태블릿/모바일 (768px 이하) */
+@media (max-width: 768px) {
+  .village-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .village-card {
+    padding: var(--spacing-md);
+  }
+
+  .village-card-logo {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* 모바일 (480px 이하) */
+@media (max-width: 480px) {
+  .village-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .village-card-stats {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+
+/*
+   ========================================
+   마을 상세 레이아웃 반응형
+   ========================================
+*/
+
+/* 태블릿 (1024px 이하) */
+/* 1200px 이하: 사이드바 축소 */
+@media (max-width: 1200px) {
+  .village-sidebar {
+    width: 180px;
+  }
+
+  .card-gallery {
+    padding-right: 160px;
+  }
+
+  .card-gallery .card-thumbnail {
+    width: 120px;
+    height: 85px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .village-sidebar {
+    width: 160px;
+  }
+
+  .list-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* 카드 갤러리 썸네일 숨기기 */
+  .card-gallery {
+    padding-right: 1.25rem;
+  }
+
+  .card-gallery .card-thumbnail {
+    display: none;
+  }
+
+  .card-gallery .engagement {
+    position: static;
+  }
+}
+
+/* 태블릿/모바일 (768px 이하) */
+@media (max-width: 768px) {
+  /* 이 페이지만 container padding 제거 */
+  .village-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0 -20px;
+    padding: 0 20px;
+    width: calc(100% + 40px);
+  }
+
+  .village-sidebar {
+    width: 100%;
+    display: contents;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .village-profile {
+    order: 1;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%;
+    background: #fff;
+    padding: 0;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .village-profile-info {
+    padding-bottom: 0;
+  }
+  .village-nav {
+    order: 3;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: calc(100% + 40px);
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 0.75rem 20px;
+    gap: 0.5rem;
+    background: #F4F5F9;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+  }
+
+  .village-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .village-main {
+    display: contents;
+  }
+
+  .village-category-tabs {
+    order: 2;
+    padding: 0.75rem 1rem;
+    margin-bottom: 10px;
+  }
+
+  .village-main .list-toolbar {
+    order: 4;
+    padding: 0 1rem;
+  }
+
+  .village-main .card-list {
+    order: 5;
+  }
+
+  .village-main .pagination {
+    order: 6;
+    padding: 1rem;
+  }
+
+  .village-profile-image {
+    height: auto;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    margin: 0;
+  }
+
+  .village-profile-name {
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-sm);
+    text-align: justify;
+  }
+
+  .village-profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .village-info-row {
+    padding: 0.25rem 0;
+  }
+
+  .village-info-label {
+    flex: 0 0 40%;
+  }
+
+  .village-info-value,
+  .village-info-link {
+    flex: 0 0 60%;
+  }
+
+  /* 카테고리 탭 (전체/마을알림/마을소통/마을질문) */
+  .village-category-tabs {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    padding: 0;
+    gap: var(--spacing-sm);
+    background: #fff;
+    border-bottom: 1px solid var(--border-light);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .village-category-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .village-category-tabs .tab-item {
+    flex-shrink: 0;
+  }
+
+  /* 사이드 네비게이션 -> Pill-shaped Horizontal Scrollable Tabs */
+  .village-nav-item {
+    flex: 0 0 auto;
+    width: auto;
+    padding: 0.5rem 0.875rem;
+    border-radius: 50px;
+    background-color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #666;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .village-nav-item:hover {
+    background-color: #eee;
+  }
+
+  .village-nav-item .icon-gray,
+  .village-nav-item .icon-white,
+  .village-nav-item.active .icon-gray,
+  .village-nav-item.active .icon-white {
+    display: none !important;
+  }
+
+  .village-nav-item.active {
+    background-color: #414141;
+    color: #fff;
+    font-weight: 600;
+  }
+
+  .village-nav-item.active:hover {
+    background-color: #333;
+  }
+
+  /* 메인 콘텐츠 영역 */
+  .village-main {
+    padding: 0;
+  }
+
+  .village-main .list-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) 0;
+    width: 100%;
+  }
+
+  .village-main .list-toolbar-left,
+  .village-main .list-toolbar-right {
+    width: 100%;
+  }
+
+  .village-main .search-box {
+    width: 100%;
+  }
+}
+
+/* 모바일 (480px 이하) */
+@media (max-width: 480px) {
+  .village-layout {
+    width: calc(100% + 40px);
+  }
+  .village-nav-item {
+    font-size: 0.8125rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .village-profile {
+    flex-direction: column;
+    margin-bottom: 10px;
+  }
+  .village-profile-image {
+    width: 100%;
+    max-height: 150px;
+  }
+  .village-profile-content {
+    width: 100%;
+  }
+}

@@ -2188,6 +2188,33 @@
   height: 18px;
 }
 
+/* 등록 버튼 - 탭/헤더용 (작은 사이즈) */
+.btn-register-sm {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--color-primary-orange);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.btn-register-sm:hover {
+  background: #e85a2a;
+}
+
+.btn-register-sm img {
+  width: 16px;
+  height: 16px;
+}
+
 /* 등록 버튼 - 고정 위치 (오른쪽 하단) */
 .btn-register-fixed {
   position: fixed;
@@ -2752,6 +2779,29 @@
     width: 16px;
     height: 16px;
   }
+
+  /* 등록 버튼 - 모바일에서 고정 원형 버튼 */
+  .btn-register-sm {
+    position: fixed;
+    right: 15px;
+    bottom: 95px;
+    z-index: 100;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border-radius: 50%;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(255, 103, 51, 0.4);
+  }
+
+  .btn-register-sm span {
+    display: none;
+  }
+
+  .btn-register-sm img {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 /* 모바일 (480px 이하) */
@@ -2840,6 +2890,14 @@
   .btn-register-fixed.mobile-circle img {
     width: 22px;
     height: 22px;
+  }
+
+  /* 등록 버튼 - 작은 모바일에서 축소 */
+  .btn-register-sm {
+    width: 45px;
+    height: 45px;
+    bottom: 80px;
+    right: 10px;
   }
 }
 

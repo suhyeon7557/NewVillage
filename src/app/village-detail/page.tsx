@@ -105,28 +105,36 @@ export default function VillageDetailPage() {
 
         {/* 오른쪽 메인 콘텐츠 */}
         <div className="village-main">
-          {/* 탭: 전체/마을알림/마을소통/마을질문 */}
-          <div className="tabs tabs-secondary village-category-tabs">
-            <button 
-              type="button" 
-              className={`tab-item ${activeCategory === "all" ? "active" : ""}`}
-              onClick={() => setActiveCategory("all")}
-            >전체</button>
-            <button 
-              type="button" 
-              className={`tab-item ${activeCategory === "notice" ? "active" : ""}`}
-              onClick={() => setActiveCategory("notice")}
-            >마을알림</button>
-            <button 
-              type="button" 
-              className={`tab-item ${activeCategory === "communication" ? "active" : ""}`}
-              onClick={() => setActiveCategory("communication")}
-            >마을소통</button>
-            <button 
-              type="button" 
-              className={`tab-item ${activeCategory === "question" ? "active" : ""}`}
-              onClick={() => setActiveCategory("question")}
-            >마을질문</button>
+          {/* 탭 + 등록버튼 영역 */}
+          <div className="village-tab-header">
+            {/* 탭: 전체/마을알림/마을소통/마을질문 */}
+            <div className="tabs tabs-secondary village-category-tabs">
+              <button 
+                type="button" 
+                className={`tab-item ${activeCategory === "all" ? "active" : ""}`}
+                onClick={() => setActiveCategory("all")}
+              >전체</button>
+              <button 
+                type="button" 
+                className={`tab-item ${activeCategory === "notice" ? "active" : ""}`}
+                onClick={() => setActiveCategory("notice")}
+              >마을알림</button>
+              <button 
+                type="button" 
+                className={`tab-item ${activeCategory === "communication" ? "active" : ""}`}
+                onClick={() => setActiveCategory("communication")}
+              >마을소통</button>
+              <button 
+                type="button" 
+                className={`tab-item ${activeCategory === "question" ? "active" : ""}`}
+                onClick={() => setActiveCategory("question")}
+              >마을질문</button>
+            </div>
+            {/* 관리자용 등록 버튼 */}
+            <button type="button" className="btn-register-sm">
+              <img src="/images/ic_pen_white.svg" alt="" />
+              <span>등록하기</span>
+            </button>
           </div>
 
           {/* 검색 + 정렬 영역 */}

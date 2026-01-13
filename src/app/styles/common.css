@@ -1514,6 +1514,32 @@
 
 .popup-overlay {
   display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+/* React 조건부 렌더링용 - 렌더링되면 바로 표시 */
+.popup-overlay.show,
+div.popup-overlay {
+  display: flex;
+}
+
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .popup-content {
@@ -1521,11 +1547,122 @@
   animation: popupFadeIn 0.3s ease;
   max-height: 90vh;
   overflow-y: auto;
+  background: #fff;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
 }
     
 
 .popup-content-lg {
   max-width: 700px;
+}
+
+/* 공유 팝업 */
+.popup-share {
+  max-width: 360px;
+}
+
+.share-options {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  padding: var(--spacing-lg) 0;
+}
+
+.share-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.share-option:hover {
+  transform: scale(1.05);
+}
+
+.share-option:active {
+  transform: scale(0.95);
+}
+
+.share-option-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.share-option-icon img {
+  width: 28px;
+  height: 28px;
+}
+
+.share-kakao {
+  background: #FEE500;
+}
+
+.share-kakao img {
+  filter: none;
+}
+
+.share-url {
+  background: #f0f0f0;
+}
+
+.share-option-label {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.share-url-field {
+  display: flex;
+  gap: var(--spacing-xs);
+  padding: 0 var(--spacing-md) var(--spacing-md);
+}
+
+.share-url-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  background: #f9f9f9;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.share-url-input:focus {
+  outline: none;
+  border-color: var(--color-primary-orange);
+}
+
+.share-url-copy {
+  padding: 10px 16px;
+  background: var(--color-primary-orange);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease;
+}
+
+.share-url-copy:hover {
+  background: var(--color-primary-orange-dark);
+}
+
+.share-url-copy.copied {
+  background: #28a745;
 }
 
 /* 팝업 헤더 */

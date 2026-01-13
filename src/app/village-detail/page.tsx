@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import SubPageLayout from "../components/SubPageLayout";
+import SharePopup from "../components/SharePopup";
 import "../styles/common.css";
 import "../styles/ourvillage.css";
 
@@ -10,6 +11,8 @@ export default function VillageDetailPage() {
   const [searchType, setSearchType] = useState("제목");
   const [activeNav, setActiveNav] = useState("board");
   const [activeCategory, setActiveCategory] = useState("all");
+  const [showVillageInfo, setShowVillageInfo] = useState(false);
+  const [showSharePopup, setShowSharePopup] = useState(false);
 
   const handleSelectOption = (value: string) => {
     setSearchType(value);
@@ -32,11 +35,16 @@ export default function VillageDetailPage() {
               <img src="/images/image_villagelogo01.png" alt="동박마실동명마을" />
             </div>
             <div className="village-profile-content">
-              <h2 className="village-profile-name">동밖마실동명마을</h2>
+              <div className="village-name-row">
+                <a href="/ourvillage" className="btn-back-village">
+                  <img src="/images/ic_arrow_left.svg" alt="뒤로가기" />
+                </a>
+                <h2 className="village-profile-name">동밖마실동명마을</h2>
+              </div>
               <div className="village-profile-info">
                 <div className="village-info-row">
-                  <span className="village-info-label">마을</span>
-                  <span className="village-info-value">동명동</span>
+                  <span className="village-info-label">주소</span>
+                  <span className="village-info-value">동구 동명동</span>
                 </div>
                 <div className="village-info-row">
                   <span className="village-info-label">주민수</span>
@@ -44,11 +52,23 @@ export default function VillageDetailPage() {
                 </div>
                 <div className="village-info-row">
                   <span className="village-info-label">정보</span>
-                  <a href="#" className="village-info-link">
+                  <button 
+                    type="button" 
+                    className="village-info-link"
+                    onClick={() => setShowVillageInfo(true)}
+                  >
                     자세히 보기
                     <img src="/images/ic_view_red.svg" alt="" className="info-link-icon" />
-                  </a>
+                  </button>
                 </div>
+                <button 
+                  type="button" 
+                  className="btn-invite"
+                  onClick={() => setShowSharePopup(true)}
+                >
+                  <img src="/images/ic_invite.svg" alt="" />
+                  <span>초대하기</span>
+                </button>
               </div>
             </div>
           </div>
@@ -401,6 +421,158 @@ export default function VillageDetailPage() {
           </div>
         </div>
       </div>
+
+      {/* 마을 정보 팝업 */}
+      {showVillageInfo && (
+        <div className="popup-overlay" onClick={() => setShowVillageInfo(false)}>
+          <div className="popup-content popup-content-lg" onClick={(e) => e.stopPropagation()}>
+            <div className="popup-header">
+              <h2 className="popup-title">동명동</h2>
+              <button 
+                type="button" 
+                className="popup-close"
+                onClick={() => setShowVillageInfo(false)}
+              >
+                <img src="/images/ic_close.svg" alt="닫기" />
+              </button>
+            </div>
+            <div className="popup-body village-info-popup">
+              {/* 유래와 특징 */}
+              <div className="info-section">
+                <h3 className="info-section-title">유래와 특징</h3>
+                <p className="info-section-content">
+                  광주읍성의 동문 밖에 위치해있었고, 동계천 근처에 위치해 있어 "동밖에"나 "동계" 등으로 불리우다가 1946년 동명동이라고 칭해져 1973년 동명동 1구와 2구가 각각 동명1동, 동명2동이 되었습니다.
+                  <br /><br />
+                  1998년 동명1동과 동명2동이 다시금 동명동으로 통합되어 명칭이 변경되었습니다. 동구 도심이나 대인시장 등과 인접한 고급주택가로, 계림5거리 부근 나무전거리에는 목재상이 밀집해있고 중앙도서관이나 노인복지회관 등 다양한 교육 및 사회복지시설이 위치하고 있습니다.
+                </p>
+              </div>
+
+              {/* 행정구역 */}
+              <div className="info-section">
+                <h3 className="info-section-title">행정구역</h3>
+                <table className="info-table">
+                  <tbody>
+                    <tr>
+                      <th>면적</th>
+                      <td>0.43km²</td>
+                    </tr>
+                    <tr>
+                      <th>행정동 명칭</th>
+                      <td>동명동</td>
+                    </tr>
+                    <tr>
+                      <th>통(개)</th>
+                      <td>10</td>
+                    </tr>
+                    <tr>
+                      <th>반(개)</th>
+                      <td>59</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              {/* 인구 및 세대 현황 */}
+              <div className="info-section">
+                <h3 className="info-section-title">인구 및 세대 현황</h3>
+                <table className="info-table">
+                  <tbody>
+                    <tr>
+                      <th>인구수(계)</th>
+                      <td>4,248</td>
+                    </tr>
+                    <tr>
+                      <th>인구수(남자)</th>
+                      <td>2,136(50.28%)</td>
+                    </tr>
+                    <tr>
+                      <th>인구수(여자)</th>
+                      <td>2,112(49.72%)</td>
+                    </tr>
+                    <tr>
+                      <th>세대수</th>
+                      <td>2,333</td>
+                    </tr>
+                    <tr>
+                      <th>세대당 인구수</th>
+                      <td>1.82</td>
+                    </tr>
+                    <tr>
+                      <th>외국인 수</th>
+                      <td>40</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              {/* 연령별 인구분포 현황 */}
+              <div className="info-section">
+                <h3 className="info-section-title">연령별 인구분포 현황</h3>
+                <table className="info-table">
+                  <tbody>
+                    <tr>
+                      <th>합계</th>
+                      <td>4,137</td>
+                    </tr>
+                    <tr>
+                      <th>10세 미만</th>
+                      <td>141</td>
+                    </tr>
+                    <tr>
+                      <th>10대</th>
+                      <td>279</td>
+                    </tr>
+                    <tr>
+                      <th>20~30대</th>
+                      <td>1,097</td>
+                    </tr>
+                    <tr>
+                      <th>40~50대</th>
+                      <td>1,204</td>
+                    </tr>
+                    <tr>
+                      <th>60대</th>
+                      <td>335</td>
+                    </tr>
+                    <tr>
+                      <th>65세 이상 노인 인구</th>
+                      <td>1,081</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              {/* 주택유형별 현황 */}
+              <div className="info-section">
+                <h3 className="info-section-title">주택유형별 현황</h3>
+                <table className="info-table">
+                  <tbody>
+                    <tr>
+                      <th>일반가구 수</th>
+                      <td>2,487</td>
+                    </tr>
+                    <tr>
+                      <th>아파트(연립 포함)</th>
+                      <td>2</td>
+                    </tr>
+                    <tr>
+                      <th>빈집</th>
+                      <td>14</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* 공유 팝업 */}
+      <SharePopup 
+        isOpen={showSharePopup}
+        onClose={() => setShowSharePopup(false)}
+        shareTitle="동밖마실동명마을 초대"
+      />
     </SubPageLayout>
   );
 }
